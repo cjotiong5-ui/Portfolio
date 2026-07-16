@@ -71,7 +71,7 @@ My goal is to become a skilled Computer Engineer who can build efficient, optimi
 ## <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" width="18"/> Contact
 
 * Email: (lagay mo email mo dito)
-* GitHub: https://github.com/(username mo)
+* GitHub: https://github.com/cjotiong5-ui
 
 ---
 
