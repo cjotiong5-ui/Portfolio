@@ -1,0 +1,37 @@
+/* Full-viewport WebGL background. Sits behind every section and never
+   receives pointer events, so the component's window-level mouse listeners
+   still track the cursor while it is over content. */
+.faulty-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* lvh is the stable large-viewport height: mobile browser chrome showing or
+   hiding must not resize the layer, which would reallocate the canvas and
+   restart the shader mid-scroll. Kept in @supports so the vh fallback above
+   survives CSS minification instead of being deduped away. */
+@supports (height: 100lvh) {
+  .faulty-bg { height: 100lvh; }
+}
+
+/* Readability scrim. Tuned against measured output: the canvas peaks near
+   240/255 on its brightest dot blocks, so the floor is strong enough to keep
+   small text legible while still passing ~34% of the effect through. The
+   radial adds extra cover behind the reading column, where copy sits directly
+   on the page (Journey and section blurbs have no card behind them). */
+.faulty-bg__scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 85% 75% at 50% 45%,
+    color-mix(in srgb, var(--bg) 76%, transparent),
+    color-mix(in srgb, var(--bg) 66%, transparent) 72%
+  );
+}

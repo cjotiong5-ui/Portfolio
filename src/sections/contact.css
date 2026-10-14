@@ -1,0 +1,134 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg-card);
+  transition: border-color var(--dur-fast), transform var(--dur-fast), background var(--dur-fast);
+}
+
+.contact-item:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+  background: var(--bg-card-alt);
+}
+
+.contact-item:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.contact-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  background: rgba(91,140,255,0.08);
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.contact-item-label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.contact-item-value {
+  font-size: 0.88rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form .btn {
+  align-self: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--bg-card);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--blue);
+  background: var(--bg-card-alt);
+}
+
+.form-input:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.form-input:-webkit-autofill,
+.form-textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--text);
+  caret-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-card) inset;
+  transition: background-color 6000s ease-in-out 0s;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-note {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: -4px;
+  text-align: center;
+}
+
+.form-note[role="status"]:empty {
+  position: absolute;
+}
+
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}

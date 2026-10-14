@@ -1,0 +1,207 @@
+/* ========================================
+   NAVIGATION (Top) — floating pill
+   ======================================== */
+.nav {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.nav-pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: var(--container-max);
+  padding: 7px 7px 7px 16px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--surface-glass-border);
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 var(--surface-hi),
+    0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Status pill */
+.nav-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-right: 14px;
+  margin-right: 6px;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.nav-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.14);
+}
+
+/* Section links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav-link {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 7px 13px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+  transition: color var(--dur-fast), background var(--dur-fast);
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: var(--surface-hi);
+}
+
+.nav-link.active {
+  color: var(--text);
+  background: var(--surface-hi);
+}
+
+/* CTA */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  font-family: var(--font-head);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--text);
+  padding: 9px 18px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+  transition: opacity var(--dur-fast);
+}
+
+.nav-cta:hover { opacity: 0.86; }
+
+.nav-cta-arrow {
+  display: inline-flex;
+  transition: transform var(--dur-fast);
+}
+
+.nav-cta:hover .nav-cta-arrow {
+  transform: translateX(3px);
+}
+
+.nav a:focus-visible,
+.bottom-nav a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Below 900px the pill drops its section links and BottomNav takes over. */
+@media (max-width: 900px) {
+  .nav { top: 14px; }
+
+  .nav-pill {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .nav-links { display: none; }
+}
+
+@media (max-width: 480px) {
+  .nav-status {
+    padding-right: 10px;
+    margin-right: 2px;
+  }
+
+  .nav-status { font-size: 0.68rem; }
+}
+
+/* ========================================
+   NAVIGATION (Bottom / mobile)
+   ======================================== */
+.bottom-nav {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .bottom-nav {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 12px 10px;
+    pointer-events: none;
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-top: 1px solid var(--surface-glass-border);
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  .bottom-nav-list {
+    pointer-events: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  .bottom-nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 4px;
+    border-radius: var(--r-md);
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+    color: var(--text-dim);
+    transition: color var(--dur-fast), background var(--dur-fast);
+  }
+
+  .bottom-nav-icon {
+    display: inline-flex;
+    color: inherit;
+  }
+
+  .bottom-nav-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bottom-nav-link:hover {
+    color: var(--text-muted);
+  }
+
+  .bottom-nav-link.active {
+    color: var(--text);
+    background: var(--surface-hi);
+  }
+}

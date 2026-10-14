@@ -1,0 +1,40 @@
+export const projects = [
+  {
+    id: 1,
+    title: 'PhilCST Web',
+    desc: 'A website for the Philippine College of Science and Technology that organizes and categorizes all the school\'s information in one place. Includes a custom attendance system feature.',
+    type: 'web',
+    category: 'web',
+    tags: ['HTML', 'CSS'],
+    featured: true,
+    thumb: 'img/Philcst.png',
+    links: [
+      { label: 'Source', href: 'https://github.com/cjotiong5-ui/webPHILCST', icon: 'github' },
+      { label: 'Live Demo', href: 'https://philcst.vercel.app', icon: 'launch' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Arduino LCD Lyrics',
+    desc: 'Displays song lyrics on an LCD screen using a sensor-based trigger. Helped me learn microcontroller programming, basic circuits, and how hardware interacts with software in real time.',
+    type: 'iot',
+    category: 'iot',
+    tags: ['Python', 'C/C++', 'Arduino'],
+    featured: false,
+    thumb: 'img/arduino.png',
+    links: [
+      { label: 'Source', href: 'https://github.com/cjotiong5-ui/Arduino-Code', icon: 'github' },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Project Title Here',
+    desc: 'Your third project description here. What was the context, your role, and what was the outcome?',
+    type: 'coming-soon',
+    category: 'all',
+    tags: ['Arduino', 'C++', 'JS'],
+    featured: false,
+    thumb: null,
+    links: [],
+  },
+]

@@ -1,0 +1,56 @@
+.chrome-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #10131a;
+  border-radius: var(--r-md);
+  background: var(--glow-bg);
+  background-size: 200% 200%;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    inset 0 -2px 6px rgba(0,0,0,0.25),
+    0 6px 18px rgba(91,140,255,0.18);
+  transition: transform var(--dur-fast), box-shadow var(--dur-fast), background-position var(--dur-reveal);
+  text-decoration: none;
+}
+
+.chrome-btn:hover {
+  transform: translateY(-2px);
+  background-position: 80% 20%;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    inset 0 -2px 6px rgba(0,0,0,0.2),
+    0 10px 26px rgba(91,140,255,0.3);
+}
+
+.chrome-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.chrome-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.chrome-btn .arrow {
+  display: inline-block;
+  transition: transform var(--dur-fast);
+}
+
+.chrome-btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chrome-btn { transition: none; }
+}

@@ -1,0 +1,115 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-text p {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+.about-text p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.about-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.about-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.about-meta-item .meta-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.about-terminal { min-width: 0; }
+
+.about-traits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.trait-card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg-card);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color var(--dur-base), transform var(--dur-base);
+}
+
+.trait-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.trait-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  background: rgba(91,140,255,0.08);
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.trait-icon.copper {
+  background: rgba(224,151,90,0.08);
+  color: var(--copper);
+}
+
+.trait-icon.green {
+  background: rgba(74,222,128,0.08);
+  color: var(--green);
+}
+
+.trait-title {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.trait-body {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-traits { grid-template-columns: 1fr; }
+}

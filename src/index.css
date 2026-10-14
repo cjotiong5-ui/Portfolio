@@ -1,0 +1,446 @@
+/* ========================================
+   DESIGN TOKENS
+   ======================================== */
+:root {
+  color-scheme: dark;
+
+  --bg:          #08090c;
+  --bg-card:     #0e1015;
+  --bg-card-alt: #111318;
+  --border:      #1a1d26;
+  --border-hover:#2a2e3a;
+  --blue:        #5b8cff;
+  --blue-dim:    #3a6ad4;
+  --copper:      #e0975a;
+  --copper-dim:  #b87a45;
+  --green:       #4ade80;
+  --purple:      #c58bff;
+  --text:        #e7e9ee;
+  --text-muted:  #8189a1;
+  --text-dim:    #7f88a8;
+
+  /* Component overrides (one place to change accent) */
+  --accent:        var(--blue);
+  --accent-rgb:    91, 140, 255;
+  --accent-2:      var(--copper);
+  --accent-2-rgb:  224, 151, 90;
+  --glow-bg:       linear-gradient(135deg, #d7dde8 0%, #8b93a3 45%, #f4f6fa 60%, #5b7ea6 85%, #c9d2de 100%);
+  --shiny-gradient: linear-gradient(115deg, var(--text) 0%, var(--text) 20%, var(--blue) 38%, var(--blue) 42%, var(--text) 55%, var(--text) 100%);
+
+  /* Faulty terminal background layer */
+  --fx-tint: #565c99;
+
+  /* Surfaces (translucent layer for floating chrome) */
+  --surface-glass: rgba(14, 16, 21, 0.68);
+  --surface-glass-border: rgba(255, 255, 255, 0.07);
+  --surface-hi: rgba(255, 255, 255, 0.05);
+
+  /* Fonts */
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Type scale — tracking and leading tighten as size grows */
+  --text-display: clamp(2.4rem, 8.5vw, 7rem);
+  --text-heading: clamp(1.6rem, 4vw, 2.2rem);
+  --text-body: 0.95rem;
+  --text-sm: 0.85rem;
+  --text-xs: 0.78rem;
+
+  --tracking-display: -0.035em;
+  --tracking-heading: -0.022em;
+  --tracking-body: 0;
+  --tracking-wide: 0.06em;
+
+  --leading-display: 0.9;
+  --leading-heading: 1.15;
+  --leading-body: 1.6;
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+
+  /* Spacing */
+  --section-gap: 120px;
+  --container-max: 1100px;
+  /* Reserved for the fixed bottom nav; 0 while it is hidden. */
+  --bottom-nav-space: 0px;
+  /* Hero portrait footprint and how far it rides up over the name.
+     The overlap has to stay a small fraction of the display type: it used to
+     max at 80px, which is ~70% of the 7rem name at wide widths, so the photo
+     covered the middle of the last name instead of tucking under it. */
+  --hero-photo-size: clamp(210px, 24vw, 320px);
+  --hero-photo-overlap: clamp(12px, 2.4vw, 34px);
+
+  /* Motion */
+  --dur-fast:    0.2s;
+  --dur-base:    0.3s;
+  --dur-slow:    0.5s;
+  --dur-reveal:  0.65s;
+  --dur-fill:    1.1s;
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-distance: 20px;
+  --reveal-stagger:  0.08s;
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 112px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  letter-spacing: var(--tracking-body);
+  background: var(--bg);
+  background-image: radial-gradient(
+    1100px 620px at 50% -8%,
+    rgba(var(--accent-rgb), 0.07),
+    transparent 70%
+  );
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: var(--leading-body);
+  padding-bottom: var(--bottom-nav-space);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--bg);
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul, ol { list-style: none; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--blue);
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: var(--text-heading);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-heading);
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.section-desc {
+  color: var(--text-muted);
+  max-width: 560px;
+  font-size: var(--text-body);
+  margin-bottom: 40px;
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========================================
+   BACKGROUND
+   ======================================== */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(91,140,255,0.06) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+.bg-gradient-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-gradient-orb--blue {
+  width: 600px;
+  height: 600px;
+  background: var(--blue);
+  top: -200px;
+  right: -200px;
+  animation: orbDrift 20s ease-in-out infinite alternate;
+}
+
+.bg-gradient-orb--copper {
+  width: 400px;
+  height: 400px;
+  background: var(--copper);
+  bottom: -100px;
+  left: -100px;
+  animation: orbDrift 25s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orbDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(60px, 40px); }
+}
+
+/* ========================================
+   SECTION BASE
+   ======================================== */
+section {
+  position: relative;
+  z-index: 1;
+  padding: var(--section-gap) 0;
+}
+
+/* ========================================
+   BUTTONS (shared system)
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--dur-fast), box-shadow var(--dur-fast),
+              background var(--dur-fast), border-color var(--dur-fast);
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: var(--bg);
+  border-color: var(--blue);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 20px rgba(91,140,255,0.25);
+  background: #6d9aff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-muted);
+  background: rgba(255,255,255,0.03);
+}
+
+.btn .arrow {
+  transition: transform var(--dur-fast);
+}
+
+.btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ========================================
+   TAGS
+   ======================================== */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.02);
+  transition: border-color var(--dur-fast), color var(--dur-fast);
+}
+
+.tag:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* ========================================
+   SCROLL REVEAL
+   ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--reveal-i, 0) * var(--reveal-stagger));
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+@keyframes ringPulse {
+  0%   { transform: scale(0.96); opacity: 0.6; }
+  100% { transform: scale(1.12); opacity: 0; }
+}
+
+@keyframes chipBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  position: relative;
+  z-index: 1;
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  gap: 12px;
+}
+
+.footer-inner a {
+  color: var(--text-muted);
+  transition: color var(--dur-fast);
+}
+
+.footer-inner a:hover {
+  color: var(--blue);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 900px) {
+  :root {
+    --section-gap: 80px;
+    --bottom-nav-space: 72px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root { --section-gap: 64px; }
+
+  .container { padding: 0 18px; }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-name,
+  .hero-photo,
+  .hero-meta,
+  .hero-stats {
+    opacity: 1;
+    animation: none;
+  }
+
+  .skill-bar-fill {
+    transition: none;
+  }
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }

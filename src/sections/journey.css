@@ -1,0 +1,153 @@
+.journey-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.journey-column-title {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.journey-column-title .col-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+
+.tl-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-dot {
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid var(--bg);
+}
+
+.tl-dot.copper { background: var(--copper); }
+
+.tl-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.tl-title {
+  font-family: var(--font-head);
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.tl-org {
+  font-size: 0.82rem;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.tl-body {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.tl-item.coming-soon { opacity: 0.35; }
+
+.tl-item.coming-soon .tl-title {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* ========================================
+   EXPERIENCE & MILESTONES REVEAL
+   Driven by IntersectionObserver in Journey.jsx. The column starts hidden and
+   completely still, then plays once when it crosses the centre band. Nothing
+   here is tied to scroll position, so it cannot overshoot or drift.
+   ======================================== */
+
+/* Line draws itself downward from the top. */
+.journey-column--milestones .timeline::before {
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform var(--dur-reveal) var(--ease-out);
+}
+
+/* Rows fade up in sequence. --tl-stagger is the row index, set in the markup. */
+.journey-column--milestones .tl-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--tl-stagger, 0) * 120ms);
+}
+
+.journey-column--milestones.is-revealed .timeline::before {
+  transform: scaleY(1);
+}
+
+.journey-column--milestones.is-revealed .tl-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* Placeholder rows settle back down to their recessive opacity once revealed. */
+.journey-column--milestones.is-revealed .tl-item.coming-soon {
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Show everything immediately: no transitions, no stagger, nothing to wait for. */
+  .journey-column--milestones .tl-item,
+  .journey-column--milestones.is-revealed .tl-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .journey-column--milestones .tl-item.coming-soon,
+  .journey-column--milestones.is-revealed .tl-item.coming-soon {
+    opacity: 0.35;
+  }
+
+  .journey-column--milestones .timeline::before {
+    transform: scaleY(1);
+    transition: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .journey-grid { grid-template-columns: 1fr; }
+}
