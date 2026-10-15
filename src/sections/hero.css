@@ -81,6 +81,26 @@
      dissolves into whatever the hero-meta row sits on. */
   -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  animation: heroPortraitIn 1.1s var(--ease-out) both;
+}
+
+/* The vendor's own entrance cannot work for this portrait: it sweeps in using
+   the ink colour as the "before" state, and pure-black ink under a screen
+   blend is completely transparent, so there is no visible shape to dissolve
+   and the portrait pops in with no animation at all. INTRO_MS in DitherVeil.jsx
+   resolves that sweep immediately, so this fade is the single entrance and the
+   dither is already fully rendered behind it. index.css forces
+   `animation: none` under prefers-reduced-motion, so the fade drops out with
+   the rest of the hero. */
+@keyframes heroPortraitIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Shown instead of the canvas when WebGL2 is missing: same footprint, same
@@ -228,7 +248,7 @@
   /* Static flow so nothing can overlap or overflow. */
   .hero-photo {
     position: static;
-    width: min(68vw, 255px);
+    width: min(76vw, 300px);
     margin: 26px auto 0;
   }
 

@@ -90,7 +90,7 @@ export function Hero() {
                 inkColor={INK_COLOR}
                 paperColor={veil.paper}
                 contrast={DITHER_CONTRAST}
-                revealRadius={110}
+                revealRadius={70}
                 softness={0.6}
                 linger={reduced ? 0 : 1}
                 rimColor={veil.accent}

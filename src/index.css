@@ -68,13 +68,13 @@
   /* Reserved for the fixed bottom nav; 0 while it is hidden. */
   --bottom-nav-space: 0px;
   /* Hero portrait footprint and how far it rides up over the name.
-     The portrait is a dithered square, so it carries ~22% more footprint than
-     the circular crop it replaced. The overlap has to stay a small fraction of
+     The portrait is a dithered square, so it carries more footprint than the
+     circular crop it replaced. The overlap has to stay a small fraction of
      the display type: it used to max at 80px, which is ~70% of the 7rem name
      at wide widths, so the photo covered the middle of the last name instead
      of tucking under it. */
-  --hero-photo-size: clamp(255px, 29vw, 390px);
-  --hero-photo-overlap: clamp(12px, 2.4vw, 34px);
+  --hero-photo-size: clamp(300px, 34vw, 470px);
+  --hero-photo-overlap: clamp(24px, 4vw, 58px);
 
   /* Motion */
   --dur-fast:    0.2s;

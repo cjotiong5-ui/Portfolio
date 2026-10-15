@@ -1,8 +1,9 @@
 // Vendor component from React Bits (https://reactbits.dev), JS + CSS variant.
-// Unmodified except for three repo-local adaptations, all marked "LOCAL EDIT":
+// Unmodified except for four repo-local adaptations, all marked "LOCAL EDIT":
 //   1. dropped the Next.js 'use client' directive,
 //   2. default export -> named export (this repo allows only App as default),
-//   3. the built-in intro is skipped when the user prefers reduced motion.
+//   3. the built-in intro is skipped when the user prefers reduced motion,
+//   4. the built-in intro is resolved immediately (see INTRO_MS below).
 // Do not refactor the shader or the diffusion logic without a reason to.
 
 import { useEffect, useRef } from 'react';
@@ -35,7 +36,13 @@ const MASK_SCALE = 0.5;
 const MAX_BURSTS = 4;
 const BURST_SECONDS = 1.2;
 const HOLD = 1.6;
-const INTRO_MS = 1100;
+// LOCAL EDIT 4 of 4: the vendor sweeps the dither in over 1100ms using the ink
+// colour as the "before" state. This portrait renders pure-black ink under a
+// `screen` blend, which makes that state fully transparent, so the sweep has no
+// visible shape to dissolve and the portrait simply pops in. Resolving the
+// intro immediately leaves the first painted frame as the finished dither, and
+// the CSS entrance on .hero-photo (heroPortraitIn) becomes the only animation.
+const INTRO_MS = 1;
 
 const hexToRgb = hex => {
   let h = String(hex || '').replace('#', '');
