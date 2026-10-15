@@ -14,9 +14,6 @@
      still above `.faulty-bg` (same paint step, later in the DOM) while letting
      the blend reach the root and read the fixed background layer. */
   z-index: auto;
-  /* ~22% larger than the old circular crop. Scoped here rather than in
-     :root because only the hero's descendants read this token. */
-  --hero-photo-size: clamp(255px, 29vw, 390px);
 }
 
 /* ---- Stage: name + overlapping photo ---- */
