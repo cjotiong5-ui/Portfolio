@@ -4,7 +4,7 @@ export const education = [
 ]
 
 export const milestones = [
-  { date: '—', title: 'Role / Achievement Title', org: 'Organization / Company', body: 'Brief description of what you did...' },
-  { date: '—', title: 'Role / Achievement Title', org: 'Organization / Company', body: 'Another experience entry...' },
-  { date: '—', title: 'Role / Achievement Title', org: 'Organization / Company', body: 'Add as many entries as you need...' },
+  { date: '2026 – Present', title: 'Departmental Officer, Sub-Secretary', org: 'Philippine College of Science and Technology', body: 'Departmental officer for the Computer Engineering department.' },
+  { date: '2025 – 2026', title: 'CEA 1st Year Representative', org: 'Philippine College of Science and Technology', body: 'Representative for first-year students in CEA.' },
+  { date: '2025 – 2026', title: '1st Year Representative', org: 'Philippine College of Science and Technology', body: 'Representative for first-year students in the Computer Engineering department.' },
 ]

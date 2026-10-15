@@ -100,7 +100,7 @@ export function Journey() {
             <div className="timeline">
               {milestones.map((item, index) => (
                 <div
-                  className="tl-item coming-soon"
+                  className="tl-item"
                   key={`${item.title}-${item.org}-${index}`}
                   style={{ '--tl-stagger': index }}
                 >
