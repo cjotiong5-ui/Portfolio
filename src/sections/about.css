@@ -51,6 +51,34 @@
 
 .about-terminal { min-width: 0; }
 
+.about-gallery { margin-top: 48px; }
+
+.about-gallery-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.about-gallery-head .section-eyebrow { margin-bottom: 0; }
+
+.about-gallery-hint {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+
+/* Transparent so the ring's depth fade blends into the page background. */
+.about-gallery-stage {
+  position: relative;
+  height: clamp(300px, 40vw, 460px);
+  margin-top: 18px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: radial-gradient(120% 80% at 50% 50%, rgba(var(--accent-rgb), 0.06), transparent 70%);
+}
+
 .about-traits {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -112,4 +140,9 @@
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; }
   .about-traits { grid-template-columns: 1fr; }
+  .about-gallery-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
 }
