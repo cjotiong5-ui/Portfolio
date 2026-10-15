@@ -6,6 +6,17 @@
   padding-top: 112px;
   padding-bottom: 44px;
   overflow: hidden;
+  /* The shared `section` rule sets z-index: 1, which makes every section a
+     stacking context and therefore a blending isolation group. The portrait's
+     `mix-blend-mode: screen` would then be trapped inside the hero, where
+     nothing is painted behind it — the dithered ink would composite as opaque
+     black instead of dropping out. z-index: auto keeps the hero positioned and
+     still above `.faulty-bg` (same paint step, later in the DOM) while letting
+     the blend reach the root and read the fixed background layer. */
+  z-index: auto;
+  /* ~22% larger than the old circular crop. Scoped here rather than in
+     :root because only the hero's descendants read this token. */
+  --hero-photo-size: clamp(255px, 29vw, 390px);
 }
 
 /* ---- Stage: name + overlapping photo ---- */
@@ -55,7 +66,7 @@
   color: var(--text);
 }
 
-/* ---- Photo ---- */
+/* ---- Portrait ---- */
 .hero-photo {
   position: absolute;
   left: 0;
@@ -65,44 +76,25 @@
   z-index: 2;
   width: var(--hero-photo-size);
   aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
-  animation: heroPhotoIn 0.8s 0.55s var(--ease-out) both;
+  /* Screen keeps only what it lightens, so the dither's black ink becomes
+     transparent and the fixed background layer shows through the portrait's
+     backdrop. This is also why INK_COLOR in Hero.jsx must stay pure black. */
+  mix-blend-mode: screen;
+  /* The gown runs to the bottom edge of the square, so the last fifth
+     dissolves into whatever the hero-meta row sits on. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
 }
 
-.hero-photo-img {
+/* Shown instead of the canvas when WebGL2 is missing: same footprint, same
+   bottom anchoring, no circle. The filter mirrors the DitherVeil grade —
+   grayscale plus a contrast push that crushes the studio backdrop to black —
+   so the screen blend still keys the background out. */
+.hero-photo-fallback {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  /* Soft edge fade so the photo's rectangular background dissolves into the page. */
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 76%, transparent 100%);
-  mask-image: radial-gradient(circle at 50% 50%, #000 76%, transparent 100%);
-  /* Touch/coarse pointers default to full colour and never get a stuck grey state. */
-  filter: grayscale(0) contrast(1);
-  transition: filter 500ms var(--ease-out);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .hero-photo-img {
-    filter: grayscale(1) contrast(1.05);
-  }
-
-  .hero-photo-img:hover {
-    filter: grayscale(0) contrast(1);
-  }
-}
-
-@keyframes heroPhotoIn {
-  from {
-    opacity: 0;
-    transform: translateY(72px) scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.6);
 }
 
 /* ---- Meta row: intro left, socials right ---- */
@@ -239,7 +231,7 @@
   /* Static flow so nothing can overlap or overflow. */
   .hero-photo {
     position: static;
-    width: min(56vw, 210px);
+    width: min(68vw, 255px);
     margin: 26px auto 0;
   }
 
@@ -270,20 +262,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px 20px;
-  }
-}
-
-/* ========================================
-   REDUCED MOTION
-   ======================================== */
-@media (prefers-reduced-motion: reduce) {
-  .hero-photo,
-  .hero-photo-img {
-    animation: none;
-    transition: none;
-    /* No entrance, and the hover colour swap is instant. */
-    opacity: 1;
-    transform: none;
-    filter: grayscale(0) contrast(1);
   }
 }
