@@ -56,6 +56,7 @@ const DRAG_THRESHOLD = 5
 const SPRING = 118
 const SETTLE_SPEED = 9
 const CAPTION_SPACE = 76
+const COUNTER_SPACE = 44
 const SWAP_LENGTH = 700
 const SWAP_SPREAD = 420
 const TO_RAD = Math.PI / 180
@@ -249,6 +250,8 @@ export function CircularCarousel({
     stretch: reduced ? 0 : clamp(stretch, 0, 1),
     depthFade: clamp(depthFade, 0, 1),
     captions,
+    // The counter alone needs far less clearance than a title over a count.
+    captionSpace: captions ? (captionText ? CAPTION_SPACE : COUNTER_SPACE) : 0,
     reduced
   }
   const settingsRef = useRef(settings)
@@ -338,7 +341,7 @@ export function CircularCarousel({
       const s = settingsRef.current
       const rect = root.getBoundingClientRect()
       if (!rect.width || !rect.height) return
-      const room = s.captions ? CAPTION_SPACE : 0
+      const room = s.captionSpace
       const width = rect.width * 0.94
       const height = (rect.height - room) * 0.92
       const P = s.perspective
@@ -616,7 +619,7 @@ export function CircularCarousel({
   useLayoutEffect(() => {
     measureRef.current()
     wakeRef.current()
-  }, [radius, cardW, cardH, tiltValue, perspective, preset, captions, count])
+  }, [radius, cardW, cardH, tiltValue, perspective, preset, captions, captionText, count])
 
   useEffect(() => {
     wakeRef.current()

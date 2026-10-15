@@ -72,7 +72,7 @@
 /* Transparent so the ring's depth fade blends into the page background. */
 .about-gallery-stage {
   position: relative;
-  height: clamp(300px, 40vw, 460px);
+  height: clamp(260px, 40vw, 460px);
   margin-top: 18px;
   border-radius: var(--r-lg);
   overflow: hidden;

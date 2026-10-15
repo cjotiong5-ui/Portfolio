@@ -1,6 +1,7 @@
 import { CircularCarousel } from '../components/ui/CircularCarousel'
 import { TerminalCard } from '../components/ui/TerminalCard'
 import { gallery } from '../data/gallery'
+import { useIsMobile } from '../hooks/useIsMobile'
 import './about.css'
 
 const ASSET = (p) => import.meta.env.BASE_URL + p
@@ -9,6 +10,10 @@ const ASSET = (p) => import.meta.env.BASE_URL + p
 const GALLERY = gallery.map((item) => ({ ...item, src: ASSET(item.src) }))
 
 export function About() {
+  // Panorama magnifies cards as they swing toward the camera, so a narrow
+  // screen needs a smaller starting card or the front one clips the stage.
+  const isMobile = useIsMobile(720)
+
   return (
     <section id="about">
       <div className="container">
@@ -63,7 +68,7 @@ export function About() {
               items={GALLERY}
               preset="panorama"
               intro="rise"
-              cardWidth={220}
+              cardWidth={isMobile ? 140 : 220}
               aspectRatio={1.333}
               speed={14}
               gap={10}
