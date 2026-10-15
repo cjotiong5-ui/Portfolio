@@ -1,0 +1,42 @@
+.border-glow {
+  position: relative;
+  border-radius: var(--r-lg);
+  background: var(--bg-card);
+}
+
+.border-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    180px circle at var(--mx, 20%) var(--my, 20%),
+    var(--glow-accent, rgba(91,140,255,0.9)),
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.border-glow:hover::before {
+  opacity: 1;
+}
+
+.border-glow > * {
+  position: relative;
+  z-index: 0;
+}
+
+@media (hover: none) {
+  .border-glow::before { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-glow::before { opacity: 0 !important; }
+}

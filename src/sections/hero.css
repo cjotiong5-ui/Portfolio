@@ -1,0 +1,289 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 112px;
+  padding-bottom: 44px;
+  overflow: hidden;
+}
+
+/* ---- Stage: name + overlapping photo ---- */
+.hero-stage {
+  position: relative;
+  /* Reserve room below the name for the photo, minus the slice that overlaps.
+     Padding (not margin) so the reservation cannot collapse out of the stage. */
+  padding-bottom: calc(var(--hero-photo-size) - var(--hero-photo-overlap));
+}
+
+.hero-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+  animation: rise var(--dur-reveal) 0.1s var(--ease-out) both;
+}
+
+.hero-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25em;
+}
+
+.hero-name-first,
+.hero-name-last {
+  display: inline;
+  margin: 0;
+}
+
+.hero-name-first {
+  color: transparent;
+  -webkit-text-stroke: clamp(1px, 0.14vw, 2px) var(--text-dim);
+  text-stroke: clamp(1px, 0.14vw, 2px) var(--text-dim);
+}
+
+/* Browsers without text-stroke get a solid fill instead of invisible glyphs. */
+@supports not ((-webkit-text-stroke: 1px #000) or (text-stroke: 1px #000)) {
+  .hero-name-first { color: var(--text-dim); }
+}
+
+.hero-name-last {
+  color: var(--text);
+}
+
+/* ---- Photo ---- */
+.hero-photo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-inline: auto;
+  z-index: 2;
+  width: var(--hero-photo-size);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  animation: heroPhotoIn 0.8s 0.55s var(--ease-out) both;
+}
+
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Soft edge fade so the photo's rectangular background dissolves into the page. */
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 76%, transparent 100%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 76%, transparent 100%);
+  /* Touch/coarse pointers default to full colour and never get a stuck grey state. */
+  filter: grayscale(0) contrast(1);
+  transition: filter 500ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-photo-img {
+    filter: grayscale(1) contrast(1.05);
+  }
+
+  .hero-photo-img:hover {
+    filter: grayscale(0) contrast(1);
+  }
+}
+
+@keyframes heroPhotoIn {
+  from {
+    opacity: 0;
+    transform: translateY(72px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---- Meta row: intro left, socials right ---- */
+.hero-meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 36px;
+  animation: rise var(--dur-reveal) 0.85s var(--ease-out) both;
+}
+
+.hero-intro {
+  max-width: 560px;
+}
+
+.hero-role {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-heading);
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.hero-tagline {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.hero-cta {
+  border-radius: var(--r-pill);
+  padding: 11px 22px;
+}
+
+.hero-cta .arrow {
+  display: inline-flex;
+}
+
+/* ---- Social pills ---- */
+.hero-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--bg-card);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.hero-social:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background: var(--bg-card-alt);
+}
+
+.hero-social:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.hero-social-icon {
+  display: inline-flex;
+  color: inherit;
+}
+
+.hero-social-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---- Stats ---- */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 40px;
+  margin: 40px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--border);
+  animation: rise var(--dur-reveal) 1s var(--ease-out) both;
+}
+
+.hero-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hero-stat-label {
+  order: 2;
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
+.hero-stat-number {
+  order: 1;
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 860px) {
+  .hero {
+    min-height: 0;
+    padding-top: 104px;
+    padding-bottom: 48px;
+  }
+
+  .hero-stage { padding-bottom: 0; }
+
+  .hero-name-last { margin-left: 14%; }
+
+  /* Static flow so nothing can overlap or overflow. */
+  .hero-photo {
+    position: static;
+    width: min(56vw, 210px);
+    margin: 26px auto 0;
+  }
+
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    margin-top: 28px;
+  }
+
+  .hero-intro { max-width: 100%; }
+
+  .hero-socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .hero-stats {
+    gap: 8px 28px;
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo,
+  .hero-photo-img {
+    animation: none;
+    transition: none;
+    /* No entrance, and the hover colour swap is instant. */
+    opacity: 1;
+    transform: none;
+    filter: grayscale(0) contrast(1);
+  }
+}

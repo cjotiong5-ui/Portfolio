@@ -1,0 +1,73 @@
+.planet-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.planet-item { display: flex; }
+
+.planet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.planet-label {
+  font-size: 0.85rem;
+  transition: color var(--dur-fast);
+}
+
+.planet-link:hover { color: var(--text); }
+.planet-link:hover + .planet { box-shadow: 0 0 16px rgba(91,140,255,0.4); }
+
+.planet-link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* Glass sphere */
+.planet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.18), transparent 42%),
+    radial-gradient(circle at 70% 80%, rgba(91,140,255,0.12), transparent 55%),
+    var(--bg-card);
+  border: 1px solid var(--border-hover);
+  color: var(--text-muted);
+  transition: border-color var(--dur-base), box-shadow var(--dur-base), color var(--dur-base), transform var(--dur-base);
+  cursor: default;
+}
+
+.planet-item:hover .planet {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 0 18px rgba(91,140,255,0.35);
+  transform: translateY(-2px);
+}
+
+.planet svg {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.planet-glyph {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet { animation: none; }
+}

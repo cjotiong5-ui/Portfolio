@@ -1,0 +1,22 @@
+.shiny-text {
+  --shiny-bg: var(--shiny-gradient);
+  color: var(--text);
+  background: var(--shiny-bg);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shiny-text.animating {
+  animation: shine 5s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%   { background-position: 120% center; }
+  60%, 100% { background-position: -80% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text.animating { animation: none; }
+}
