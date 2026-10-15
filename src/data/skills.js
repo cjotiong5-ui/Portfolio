@@ -40,6 +40,25 @@ export const skills = [
     tags: ['Arduino IDE', 'GitHub', 'VS Code', 'AutoCAD', 'MATLAB', 'Antigravity IDE', 'Windows'],
   },
   {
+    id: 'video',
+    title: 'Video Editing',
+    level: 'Intermediate',
+    span: 1,
+    icon: 'video',
+    items: [{ name: 'Proficiency', pct: 50 }],
+    tags: [],
+  },
+  {
+    id: 'canva',
+    title: 'Canva Editing',
+    level: 'Intermediate',
+    note: 'pubmats / social media graphics',
+    span: 1,
+    icon: 'palette',
+    items: [{ name: 'Proficiency', pct: 50 }],
+    tags: ['Canva'],
+  },
+  {
     id: 'soft',
     title: 'Soft Skills',
     span: 1,
@@ -57,3 +76,12 @@ export const skills = [
     quote: '> the best way to learn is to build something that does not work yet',
   },
 ]
+
+// Skills repeated as chips in the About section. Derived from `level` so each
+// skill is declared once and surfaces in both places.
+export const aboutSkills = {
+  label: 'editing',
+  items: skills
+    .filter((s) => s.level)
+    .map((s) => ({ name: s.title, level: s.level, note: s.note })),
+}

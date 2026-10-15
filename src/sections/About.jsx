@@ -1,6 +1,7 @@
 import { CircularCarousel } from '../components/ui/CircularCarousel'
 import { TerminalCard } from '../components/ui/TerminalCard'
 import { gallery } from '../data/gallery'
+import { aboutSkills } from '../data/skills'
 import { useIsMobile } from '../hooks/useIsMobile'
 import './about.css'
 
@@ -51,6 +52,23 @@ export function About() {
                 <span>Graduating 2029</span>
               </div>
             </div>
+
+            {aboutSkills.items.length > 0 && (
+              <div className="about-skills">
+                <p className="about-skills-label">{aboutSkills.label}</p>
+                <ul className="about-skills-list">
+                  {aboutSkills.items.map((s) => (
+                    <li className="about-skill" key={s.name}>
+                      <div className="about-skill-head">
+                        <span className="about-skill-name">{s.name}</span>
+                        <span className="tag">{s.level}</span>
+                      </div>
+                      {s.note && <span className="about-skill-note">{s.note}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <div className="about-terminal reveal" style={{ '--reveal-i': 1 }}>
