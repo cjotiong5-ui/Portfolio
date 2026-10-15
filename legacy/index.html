@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cristan Jay Otiong — Computer Engineering student building real projects in web development, embedded systems, and software.">
+  <meta name="theme-color" content="#08090c">
+  <title>CJ.OTIONG — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-gradient-orb bg-gradient-orb--blue" aria-hidden="true"></div>
+  <div class="bg-gradient-orb bg-gradient-orb--copper" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo" aria-label="Back to top">
+        CJ.OTIONG<span class="dot" aria-hidden="true"></span>
+      </a>
+
+      <div class="nav-overlay" aria-hidden="true"></div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#skills">skills</a>
+        <a href="#projects">projects</a>
+        <a href="#journey">journey</a>
+        <a href="#contact">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================== HERO ======================== -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="pip" aria-hidden="true"></span>
+            open for internships &amp; opportunities
+          </div>
+
+          <h1 class="hero-title">
+            Cristan Jay <span class="accent">Otiong</span>
+          </h1>
+
+          <p class="hero-subtitle">// Computer Engineering Student</p>
+
+          <p class="hero-typewriter" aria-live="polite">
+            <span id="typewriter"></span><span class="cursor" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero-desc">
+            I'm a Computer Engineering student who likes building things that actually work — from
+            websites to embedded systems. Most of what I know comes from hands-on projects,
+            school work, and a lot of trial and error.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              View my work
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              Get in touch
+            </a>
+          </div>
+
+          <div class="hero-tech" aria-label="Technologies I use">
+            <span class="hero-tech-label">tech:</span>
+            <div class="hero-tech-icons">
+              <span class="hero-tech-icon" title="C/C++">C++</span>
+              <span class="hero-tech-icon" title="Python">Py</span>
+              <span class="hero-tech-icon" title="JavaScript">JS</span>
+              <span class="hero-tech-icon" title="HTML/CSS">HC</span>
+              <span class="hero-tech-icon" title="Arduino">Ar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-avatar-wrap">
+          <div class="hero-avatar-ring" aria-hidden="true"></div>
+          <div class="hero-avatar-ring" aria-hidden="true"></div>
+          <div class="hero-avatar-box">
+            <img id="avatar-img" src="img/gradpic.JPG" alt="Cristan Jay Otiong" width="280" height="280">
+            <div id="avatar-initials" class="hero-avatar-initials" aria-hidden="true">CJ</div>
+          </div>
+          <div class="hero-chip hero-chip--role">
+            <span class="chip-dot" aria-hidden="true"></span>
+            computer engineering
+          </div>
+          <div class="hero-chip hero-chip--eng">
+            <span class="chip-dot" aria-hidden="true"></span>
+            hardware + software
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">years studying CPE</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">projects built</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1+</div>
+          <div class="stat-label">certifications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">&infin;</div>
+          <div class="stat-label">desire to learn</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== ABOUT ======================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="section-eyebrow">who i am</p>
+          <h2 class="section-title">About Me</h2>
+          <p>
+            I'm a <strong>Computer Engineering student</strong> at the Philippine College of Science and Technology. I'm into both hardware and software — I like the idea that I can work on a website in the morning and wire up an Arduino circuit in the afternoon.
+          </p>
+          <p>
+            Most of what I've learned so far comes from building actual projects for school and on my own. I'm not going to pretend I know everything — I'm still figuring things out, and honestly, that's the part I enjoy the most.
+          </p>
+          <p>
+            Outside of coding, I play volleyball, dance, and spend way too much time on games like Valorant and CODM.
+          </p>
+
+          <div class="about-meta">
+            <div class="about-meta-item">
+              <div class="meta-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <span>Aguilar, Pangasinan, Philippines</span>
+            </div>
+            <div class="about-meta-item">
+              <div class="meta-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <span>Philippine College of Science and Technology</span>
+            </div>
+            <div class="about-meta-item">
+              <div class="meta-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              </div>
+              <span>Graduating 2029</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-traits">
+          <div class="trait-card reveal reveal-delay-1">
+            <div class="trait-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <div>
+              <div class="trait-title">Problem Solver</div>
+              <div class="trait-body">I enjoy breaking things down and figuring out how they work. Half my projects started because I wanted to solve a specific problem.</div>
+            </div>
+          </div>
+          <div class="trait-card reveal reveal-delay-2">
+            <div class="trait-icon copper">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div>
+              <div class="trait-title">Hardware + Software</div>
+              <div class="trait-body">Being in CPE means I work with circuits and code. I like that I can switch between designing a PCB and writing a script.</div>
+            </div>
+          </div>
+          <div class="trait-card reveal reveal-delay-3">
+            <div class="trait-icon green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div>
+              <div class="trait-title">Fast Learner</div>
+              <div class="trait-body">I pick up new tools and languages as I go. Most of my skills come from just diving in and figuring things out along the way.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SKILLS ======================== -->
+  <section id="skills">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">what i know</p>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+        <p class="section-desc">Technologies and tools I've picked up through school projects and personal experiments.</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <!-- Programming Languages -->
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="skill-card-title">Programming Languages</div>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>C/C++</span><span>20%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-fill="20%"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>Python</span><span>30%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill copper" data-fill="30%"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>HTML/CSS</span><span>40%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill green" data-fill="40%"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>JavaScript</span><span>35%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-fill="35%"></div></div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">C</span>
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Hardware & Embedded -->
+        <div class="skill-card reveal reveal-delay-2">
+          <div class="skill-card-header">
+            <div class="skill-card-icon copper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+            </div>
+            <div class="skill-card-title">Hardware &amp; Embedded</div>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>Arduino / AVR</span><span>70%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill copper" data-fill="70%"></div></div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">Arduino</span>
+            <span class="tag">PCB</span>
+          </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="skill-card reveal reveal-delay-3">
+          <div class="skill-card-header">
+            <div class="skill-card-icon green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="skill-card-title">Web Development</div>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>HTML/CSS</span><span>40%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill green" data-fill="40%"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="skill-bar-label"><span>JavaScript</span><span>35%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-fill="35%"></div></div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Tools & Platforms -->
+        <div class="skill-card reveal reveal-delay-4">
+          <div class="skill-card-header">
+            <div class="skill-card-icon purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div class="skill-card-title">Tools &amp; Platforms</div>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">Arduino IDE</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">AutoCAD</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Antigravity IDE</span>
+            <span class="tag">Windows</span>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skill-card reveal reveal-delay-1">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="skill-card-title">Soft Skills</div>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">Teamwork</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Critical Thinking</span>
+            <span class="tag">Time Management</span>
+            <span class="tag">Adaptability</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PROJECTS ======================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="projects-header">
+        <div class="reveal">
+          <p class="section-eyebrow">what i built</p>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-desc">Things I've actually built — school projects, personal experiments, and things I made because I was curious.</p>
+        </div>
+        <div class="project-filters reveal">
+          <button class="project-filter active" data-filter="all">All</button>
+          <button class="project-filter" data-filter="web">Web</button>
+          <button class="project-filter" data-filter="iot">IoT / Hardware</button>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: PhilCST Web (Featured) -->
+        <article class="project-card reveal" data-category="web">
+          <div class="project-thumb">
+            <img src="img/Philcst.png" alt="PhilCST Web project screenshot" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-type web">web development</div>
+            <h3 class="project-title">PhilCST Web</h3>
+            <p class="project-desc">
+              A website for the Philippine College of Science and Technology that organizes and categorizes all the school's information in one place. Built as a way to make school info more accessible and organized.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/cjotiong5-ui/webPHILCST" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                Source
+              </a>
+              <a href="https://philcst.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Arduino LCD Lyrics -->
+        <article class="project-card reveal" data-category="iot">
+          <div class="project-thumb">
+            <img src="img/arduino.png" alt="Arduino LCD project" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-type iot">iot / hardware</div>
+            <h3 class="project-title">Project Title Here</h3>
+            <p class="project-desc">
+              This Arduino project displays song lyrics on an LCD screen using a sensor-based trigger. It helped me learn microcontroller programming, basic circuits, and how hardware interacts with software in real time.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">C/C++</span>
+              <span class="tag">Arduino</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/cjotiong5-ui/Arduino-Code" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                Source
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Coming Soon -->
+        <article class="project-card reveal" data-category="all">
+          <div class="project-thumb">
+            <div class="project-thumb-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-type coming-soon">coming soon</div>
+            <h3 class="project-title">Project Title Here</h3>
+            <p class="project-desc">
+              Your third project description here. What was the context, your role, and what was the outcome?
+            </p>
+            <div class="project-tags">
+              <span class="tag">Arduino</span>
+              <span class="tag">C++</span>
+              <span class="tag">JS</span>
+            </div>
+            <div class="project-soon-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              more details coming soon
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== JOURNEY ======================== -->
+  <section id="journey">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">my path</p>
+        <h2 class="section-title">Education &amp; Journey</h2>
+        <p class="section-desc">Where I've been and what I've been working on.</p>
+      </div>
+
+      <div class="journey-grid">
+
+        <!-- Education -->
+        <div class="journey-column reveal">
+          <div class="journey-column-title">
+            <span class="col-dot" style="background: var(--blue);" aria-hidden="true"></span>
+            Education
+          </div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-date">2025 – Present</div>
+              <div class="tl-title">Bachelor of Science in Computer Engineering</div>
+              <div class="tl-org">Philippine College of Science and Technology</div>
+              <div class="tl-body">Currently pursuing BSCPE. Taking subjects like Data Structures, Digital Systems, Embedded Systems, and Computer Architecture.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-date">2023 – 2025</div>
+              <div class="tl-title">Senior High School — STEM Strand</div>
+              <div class="tl-org">Saint Albert the Great Science Academy</div>
+              <div class="tl-body">Focused on STEM with emphasis on Physics and Mathematics.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="journey-column reveal">
+          <div class="journey-column-title">
+            <span class="col-dot" style="background: var(--copper);" aria-hidden="true"></span>
+            Experience &amp; Milestones
+          </div>
+          <div class="timeline">
+            <div class="tl-item coming-soon">
+              <div class="tl-dot copper"></div>
+              <div class="tl-date">—</div>
+              <div class="tl-title">Role / Achievement Title</div>
+              <div class="tl-org">Organization / Company</div>
+              <div class="tl-body">Brief description of what you did...</div>
+            </div>
+            <div class="tl-item coming-soon">
+              <div class="tl-dot copper"></div>
+              <div class="tl-date">—</div>
+              <div class="tl-title">Role / Achievement Title</div>
+              <div class="tl-org">Organization / Company</div>
+              <div class="tl-body">Another experience entry...</div>
+            </div>
+            <div class="tl-item coming-soon">
+              <div class="tl-dot copper"></div>
+              <div class="tl-date">—</div>
+              <div class="tl-title">Role / Achievement Title</div>
+              <div class="tl-org">Organization / Company</div>
+              <div class="tl-body">Add as many entries as you need...</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CONTACT ======================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">let's connect</p>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-desc">Whether you have a project idea, an internship offer, or just want to connect — feel free to reach out.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <a href="mailto:kalixcristanjace17@gmail.com" class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">kalixcristanjace17@gmail.com</div>
+            </div>
+          </a>
+
+          <a href="https://github.com/cjotiong5-ui" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">GitHub</div>
+              <div class="contact-item-value">github.com/cjotiong5-ui</div>
+            </div>
+          </a>
+
+          <a href="https://www.facebook.com/stanjay17" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Facebook</div>
+              <div class="contact-item-value">facebook.com/stanjay17</div>
+            </div>
+          </a>
+        </div>
+
+        <form id="contact-form" class="contact-form reveal">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Name</label>
+            <input class="form-input" type="text" id="contact-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Email</label>
+            <input class="form-input" type="email" id="contact-email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message</label>
+            <textarea class="form-textarea" id="contact-message" name="message" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Send Message
+            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <p class="form-note">Or email me directly at <a href="mailto:kalixcristanjace17@gmail.com" style="color: var(--blue);">kalixcristanjace17@gmail.com</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span>Built by Cristan Jay Otiong &middot; &copy; 2026</span>
+        <a href="#home">back to top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
