@@ -77,11 +77,19 @@
      transparent and the fixed background layer shows through the portrait's
      backdrop. This is also why INK_COLOR in Hero.jsx must stay pure black. */
   mix-blend-mode: screen;
-  /* The gown runs to the bottom edge of the square, so the last fifth
-     dissolves into whatever the hero-meta row sits on. */
-  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  /* The gown fills the square, so the bottom third dissolves into whatever the
+     hero-meta row sits on instead of ending on a hard edge. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 98%);
+  mask-image: linear-gradient(to bottom, #000 66%, transparent 98%);
   animation: heroPortraitIn 1.1s var(--ease-out) both;
+}
+
+/* Side fade on the inner canvas. Nested masks multiply, so this intersects with
+   the wrapper's bottom fade without needing mask-composite, which keeps the
+   square's vertical edges from reading as a box around the portrait. */
+.hero-photo > .dither-veil {
+  -webkit-mask-image: radial-gradient(ellipse 68% 72% at 50% 46%, #000 82%, transparent 100%);
+  mask-image: radial-gradient(ellipse 68% 72% at 50% 46%, #000 82%, transparent 100%);
 }
 
 /* The vendor's own entrance cannot work for this portrait: it sweeps in using
@@ -248,7 +256,7 @@
   /* Static flow so nothing can overlap or overflow. */
   .hero-photo {
     position: static;
-    width: min(76vw, 300px);
+    width: min(66vw, 260px);
     margin: 26px auto 0;
   }
 

@@ -31,6 +31,24 @@ const tokenHex = (token, fallback) => {
   return `#${parts.slice(0, 3).map((v) => Number(v).toString(16).padStart(2, '0')).join('')}`
 }
 
+// The dither's lightest tone. Plain white glared against the FaultyTerminal
+// layer, so this lifts the wallpaper's own tint toward white instead of
+// ignoring it: --fx-tint (#565c99) mixed 62% toward white lands the dots around
+// 200/255, which is the level that sits in the background instead of on top of
+// it. Change --fx-tint and the dither follows automatically.
+const PAPER_MIX = 0.62
+const PAPER_FALLBACK = '#bfc1d8'
+
+const tintPaper = () => {
+  const rgb = tokenHex('--fx-tint', '').replace('#', '')
+  if (rgb.length !== 6) return PAPER_FALLBACK
+  const channels = [0, 2, 4].map((i) => {
+    const c = parseInt(rgb.slice(i, i + 2), 16)
+    return Math.round(c + (255 - c) * PAPER_MIX)
+  })
+  return `#${channels.map((c) => c.toString(16).padStart(2, '0')).join('')}`
+}
+
 // Both shaders are GLSL ES 3.00, so a WebGL2 context is mandatory — ogl would
 // otherwise fall back to WebGL1 and the programs would fail to compile. The
 // probe context is released immediately so it never counts against the
@@ -66,7 +84,7 @@ export function Hero() {
   const [veil] = useState(() => ({
     webgl: supportsWebGL2(),
     accent: tokenHex('--accent', '#5b8cff'),
-    paper: tokenHex('--text', '#e7e9ee'),
+    paper: tintPaper(),
   }))
 
   return (
