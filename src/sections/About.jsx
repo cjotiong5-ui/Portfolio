@@ -1,5 +1,12 @@
+import { CircularCarousel } from '../components/ui/CircularCarousel'
 import { TerminalCard } from '../components/ui/TerminalCard'
+import { gallery } from '../data/gallery'
 import './about.css'
+
+const ASSET = (p) => import.meta.env.BASE_URL + p
+
+// Built once so the carousel never sees a new items array and re-swaps cards.
+const GALLERY = gallery.map((item) => ({ ...item, src: ASSET(item.src) }))
 
 export function About() {
   return (
@@ -43,6 +50,36 @@ export function About() {
 
           <div className="about-terminal reveal" style={{ '--reveal-i': 1 }}>
             <TerminalCard />
+          </div>
+        </div>
+
+        <div className="about-gallery reveal">
+          <div className="about-gallery-head">
+            <p className="section-eyebrow">gallery</p>
+            <p className="about-gallery-hint">drag, scroll, or click a card</p>
+          </div>
+          <div className="about-gallery-stage">
+            <CircularCarousel
+              items={GALLERY}
+              preset="panorama"
+              intro="rise"
+              cardWidth={220}
+              aspectRatio={1.333}
+              speed={14}
+              gap={10}
+              tilt={0}
+              curve={0.7}
+              perspective={1800}
+              momentum={0.98}
+              parallax={0.36}
+              stretch={0.81}
+              depthFade={0.38}
+              innerShade={0.69}
+              cornerRadius={14}
+              pauseOnHover
+              captions
+              captionText={false}
+            />
           </div>
         </div>
 
