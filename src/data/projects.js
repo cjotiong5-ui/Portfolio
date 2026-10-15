@@ -2,7 +2,7 @@ export const projects = [
   {
     id: 1,
     title: 'PhilCST Web',
-    desc: 'A website for the Philippine College of Science and Technology that organizes and categorizes all the school\'s information in one place. Includes a custom attendance system feature.',
+    desc: 'A website for the Philippine College of Science and Technology that organizes and categorizes all the school\'s information in one place.',
     type: 'web',
     category: 'web',
     tags: ['HTML', 'CSS'],
