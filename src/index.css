@@ -68,13 +68,15 @@
   /* Reserved for the fixed bottom nav; 0 while it is hidden. */
   --bottom-nav-space: 0px;
   /* Hero portrait footprint and how far it rides up over the name.
-     The portrait is a dithered square. Keep it well clear of the viewport
-     edges: at 470px the gown ran off the bottom of short screens and read as
-     a cropped box. The overlap stays a small fraction of the display type, and
-     it used to max at 80px, which is ~70% of the 7rem name at wide widths and
-     covered the middle of the last name instead of tucking under it. */
-  --hero-photo-size: clamp(260px, 25vw, 340px);
-  --hero-photo-overlap: clamp(18px, 2.6vw, 36px);
+     The portrait is a dithered square. It can run large because there is no
+     frame around it any more: the ink is pure black under a screen blend, so
+     the photo's backdrop never paints, and the wrapper and canvas masks carry
+     the square's edges away. The overlap stays a small fraction of the display
+     type, and it used to max at 80px, which is ~70% of the 7rem name at wide
+     widths and covered the middle of the last name instead of tucking under
+     it. */
+  --hero-photo-size: clamp(300px, 34vw, 470px);
+  --hero-photo-overlap: clamp(24px, 4vw, 58px);
 
   /* Motion */
   --dur-fast:    0.2s;

@@ -256,7 +256,7 @@
   /* Static flow so nothing can overlap or overflow. */
   .hero-photo {
     position: static;
-    width: min(66vw, 260px);
+    width: min(76vw, 300px);
     margin: 26px auto 0;
   }
 
