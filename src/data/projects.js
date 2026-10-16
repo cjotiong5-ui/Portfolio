@@ -1,5 +1,19 @@
 export const projects = [
   {
+    id: 4,
+    title: 'ESOES CampusFlow',
+    desc: 'Online enrollment system for engineering students that replaces the physical enrollment lines. Students check prerequisite eligibility, pick a block section, and view their schedule, while admins manage the roster, courses, and re-enrollment approvals. Helped me learn full-stack development, secure authentication, and database design on a real, deployed project.',
+    type: 'web',
+    category: 'web',
+    tags: ['Python', 'Flask', 'SQLite', 'JavaScript', 'PWA'],
+    featured: true,
+    thumb: 'img/ESOES-logo.png',
+    thumbAlt: 'ESOES CampusFlow logo',
+    links: [
+      { label: 'Live Demo', href: 'https://esoes1.pythonanywhere.com', icon: 'launch' },
+    ],
+  },
+  {
     id: 1,
     title: 'PhilCST Web',
     desc: 'A website for the Philippine College of Science and Technology that organizes and categorizes all the school\'s information in one place.',

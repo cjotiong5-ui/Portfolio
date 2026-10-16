@@ -59,7 +59,7 @@ export function Projects() {
               <article className="project-card" data-category={project.category}>
                 {project.thumb ? (
                   <div className="project-thumb">
-                    <img src={ASSET(project.thumb)} alt={`${project.title} screenshot`} loading="lazy" />
+                    <img src={ASSET(project.thumb)} alt={project.thumbAlt ?? `${project.title} screenshot`} loading="lazy" />
                   </div>
                 ) : (
                   <div className="project-thumb">
