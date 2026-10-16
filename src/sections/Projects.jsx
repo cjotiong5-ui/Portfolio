@@ -69,7 +69,7 @@ export function Projects() {
                   </div>
                 )}
                 <div className="project-body">
-                  <div className={`project-type ${project.type}`}>{project.type === 'coming-soon' ? 'coming soon' : project.type}</div>
+                  <div className={`project-type ${project.type}`}>{project.type}</div>
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-desc">{project.desc}</p>
                   <div className="project-tags">
@@ -89,12 +89,6 @@ export function Projects() {
                         {link.label}
                       </a>
                     ))}
-                    {project.type === 'coming-soon' && (
-                      <span className="project-soon-badge">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        more details coming soon
-                      </span>
-                    )}
                   </div>
                 </div>
               </article>

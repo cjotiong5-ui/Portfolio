@@ -40,15 +40,4 @@ export const projects = [
       { label: 'Source', href: 'https://github.com/cjotiong5-ui/Arduino-Code', icon: 'github' },
     ],
   },
-  {
-    id: 3,
-    title: 'Project Title Here',
-    desc: 'Your third project description here. What was the context, your role, and what was the outcome?',
-    type: 'coming-soon',
-    category: 'all',
-    tags: ['Arduino', 'C++', 'JS'],
-    featured: false,
-    thumb: null,
-    links: [],
-  },
 ]

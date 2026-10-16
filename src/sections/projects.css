@@ -120,7 +120,6 @@
 
 .project-type.web { color: var(--blue); }
 .project-type.iot { color: var(--copper); }
-.project-type.coming-soon { color: var(--text-dim); }
 
 .project-title {
   font-size: 1.2rem;
@@ -173,18 +172,6 @@
 .project-link svg {
   width: 16px;
   height: 16px;
-}
-
-.project-soon-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  border: 1px dashed var(--border);
-  padding: 4px 12px;
-  border-radius: 12px;
 }
 
 @media (max-width: 860px) {
